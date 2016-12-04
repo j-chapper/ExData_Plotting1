@@ -21,11 +21,7 @@ df <- read.table(
 # select just the Date and Global Active Power columns
 df2 <- select(df, c(Date, Global_active_power))
 
-# convert Date field to true date values
-#df2$Date <- as.Date(df2$Date, format = "%d/%m/%Y")
-
 # select just the desired date range
-#df3 <- filter(df2, Date == "2007-02-01" | Date == "2007-02-02")
 df2 <- filter(df2, Date == "1/2/2007" | Date == "2/2/2007")
 
 # convert metric to numeric
