@@ -19,13 +19,13 @@ df <- read.table(
 )
 
 # select just the Date and Global Active Power columns
-df2 <- select(df, c(Date, Global_active_power))
+df <- select(df, c(Date, Global_active_power))
 
 # select just the desired date range
-df2 <- filter(df2, Date == "1/2/2007" | Date == "2/2/2007")
+df <- filter(df, Date == "1/2/2007" | Date == "2/2/2007")
 
 # convert metric to numeric
-df2$Global_active_power <- as.numeric(df2$Global_active_power)
+df$Global_active_power <- as.numeric(df$Global_active_power)
 
 
 
@@ -36,7 +36,7 @@ png(filename = "plot1.png")
 
 # create the plot
 hist(
-  df2$Global_active_power, 
+  df$Global_active_power, 
   col="red", 
   main="Global Active Power", 
   xlab="Global Active Power (kilowatts)"

@@ -21,14 +21,14 @@ df <- read.table(
 )
 
 # select just the Date, Time, and Global Active Power columns
-df2 <- select(df, c(Date, Time, Global_active_power))
+df <- select(df, c(Date, Time, Global_active_power))
 
 # select just the desired date range
-df2 <- filter(df2, Date == "1/2/2007" | Date == "2/2/2007")
+df <- filter(df, Date == "1/2/2007" | Date == "2/2/2007")
 
 # convert values to allow date/numeric operations
-df2$DateTime <- as.POSIXct(paste(df2$Date, df2$Time), format="%d/%m/%Y %H:%M:%S")
-df2$Global_active_power <- as.numeric(df2$Global_active_power)
+df$DateTime <- as.POSIXct(paste(df$Date, df$Time), format="%d/%m/%Y %H:%M:%S")
+df$Global_active_power <- as.numeric(df$Global_active_power)
 
 
 # now to build the image:
@@ -38,8 +38,8 @@ png(filename = "plot2.png")
 
 # create the plot
 plot(
-  df2$DateTime, 
-  df2$Global_active_power, 
+  df$DateTime, 
+  df$Global_active_power, 
   type = "l", 
   xlab = NA, 
   ylab = "Global Active Power (kilowatts)"

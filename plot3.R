@@ -21,16 +21,16 @@ df <- read.table(
 )
 
 # select just the Date, Time, and the 3 sub-metering columns
-df2 <- select(df, c(Date, Time, Sub_metering_1, Sub_metering_2, Sub_metering_3))
+df <- select(df, c(Date, Time, Sub_metering_1, Sub_metering_2, Sub_metering_3))
 
 # select just the desired date range
-df2 <- filter(df2, Date == "1/2/2007" | Date == "2/2/2007")
+df <- filter(df, Date == "1/2/2007" | Date == "2/2/2007")
 
 # convert values to allow date/numeric operations
-df2$DateTime <- as.POSIXct(paste(df2$Date, df2$Time), format="%d/%m/%Y %H:%M:%S")
-df2$Sub_metering_1 <- as.numeric(df2$Sub_metering_1)
-df2$Sub_metering_2 <- as.numeric(df2$Sub_metering_2)
-df2$Sub_metering_3 <- as.numeric(df2$Sub_metering_3)
+df$DateTime <- as.POSIXct(paste(df$Date, df$Time), format="%d/%m/%Y %H:%M:%S")
+df$Sub_metering_1 <- as.numeric(df$Sub_metering_1)
+df$Sub_metering_2 <- as.numeric(df$Sub_metering_2)
+df$Sub_metering_3 <- as.numeric(df$Sub_metering_3)
 
 
 
@@ -42,17 +42,17 @@ png(filename = "plot3.png")
 # create the plot
 # use Sub_metering_1 to set the format, as it has the widest range of values
 plot(
-  df2$DateTime, 
-  df2$Sub_metering_1, 
+  df$DateTime, 
+  df$Sub_metering_1, 
   type = "n", 
   xlab = NA, 
   ylab = "Energy sub metering"
 )
 
 # now add the line for each variable
-lines(df2$DateTime, df2$Sub_metering_1)
-lines(df2$DateTime, df2$Sub_metering_2, col = "red")
-lines(df2$DateTime, df2$Sub_metering_3, col = "blue")
+lines(df$DateTime, df$Sub_metering_1)
+lines(df$DateTime, df$Sub_metering_2, col = "red")
+lines(df$DateTime, df$Sub_metering_3, col = "blue")
 
 # add legend
 legend(

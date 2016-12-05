@@ -57,17 +57,17 @@ plot(
 # 2nd plot
 # use Sub_metering_1 to set the format, as it has the widest range of values
 plot(
-  df2$DateTime, 
-  df2$Sub_metering_1, 
+  df$DateTime, 
+  df$Sub_metering_1, 
   type = "n", 
   xlab = NA, 
   ylab = "Energy sub metering"
 )
 
 # now add the line for each variable
-lines(df2$DateTime, df2$Sub_metering_1)
-lines(df2$DateTime, df2$Sub_metering_2, col = "red")
-lines(df2$DateTime, df2$Sub_metering_3, col = "blue")
+lines(df$DateTime, df$Sub_metering_1)
+lines(df$DateTime, df$Sub_metering_2, col = "red")
+lines(df$DateTime, df$Sub_metering_3, col = "blue")
 
 # add legend
 legend(
